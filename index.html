@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <style>
+  body {
+    margin: 0;
+    font-family: 'Times', sans-serif;
+    
+  background: url('heet1.jpg');
+
+    background-size: cover;
+    color: white;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+  }
+
+  
+
+  
+</style>
+
+  <meta charset="viewport" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vote Heet for Head Boy</title>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@300;500&display=swap');
+
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+    body, html {
+      height: 100%; font-family: 'Lucida Bright', sans-serif; color: #f0f0f0;
+      background: linear-gradient(135deg, #121212, #1f1f1f, #2c2c2c);
+      overflow-x: hidden;
+    }
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      animation: floatParticles 6s ease-in-out infinite alternate;
+    }
+    @keyframes floatParticles {
+      0% { transform: translateY(0);}
+      100% { transform: translateY(15px);}
+    }
+
+    header {
+      text-align: center;
+      padding: 100px 20px 60px;
+      animation: fadeInUp 1s ease forwards;
+      user-select: none;
+    }
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 4rem;
+      color: #00bcd4;
+      letter-spacing: 4px;
+      font-weight: 700;
+    }
+    header p {
+      font-size: 1.4rem;
+      color: #bbb;
+      margin-top: 12px;
+      font-weight: 500;
+    }
+
+    main {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px 15px 60px;
+    }
+    section {
+      margin: 70px 0;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.9s ease;
+      will-change: opacity, transform;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    h2 {
+      font-size: 2.4rem;
+      margin-bottom: 20px;
+      color: #00bcd4;
+      border-left: 6px solid #00bcd4;
+      padding-left: 14px;
+      font-weight: 700;
+      user-select: none;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+      line-height: 1.8;
+      font-weight: 500;
+    }
+    ul li::before {
+      content: '• ';
+      color: #00bcd4;
+      font-weight: 900;
+    }
+    ul li {
+      margin-bottom: 12px;
+      font-size: 1.1rem;
+    }
+
+    /* Achievements cards */
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+      gap: 25px;
+      margin-top: 15px;
+    }
+    .achievement-card {
+      background: rgba(255, 255, 255, 0.07);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 0 15px #0097a7aa;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+      user-select: none;
+    }
+    .achievement-card:hover {
+      transform: translateY(-10px) scale(1.04);
+      box-shadow: 0 0 30px #00acc1cc;
+    }
+    .achievement-card h3 {
+      margin-bottom: 8px;
+      color: #00bcd4;
+      font-weight: 700;
+    }
+    .achievement-card p {
+      font-weight: 400;
+      color: #ccc;
+      font-size: 0.95rem;
+    }
+
+    /* Supporters section */
+    .supporters-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .supporter {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 14px 22px;
+      border-radius: 30px;
+      font-weight: 600;
+      color: #00bcd4;
+      box-shadow: 0 0 8px #00bcd488;
+      cursor: default;
+      user-select: none;
+      transition: background 0.3s ease, transform 0.2s ease;
+      position: relative;
+    }
+    .supporter:hover {
+      background: #00bcd422;
+      color: #0097a7;
+      box-shadow: 0 0 18px #0097a7cc;
+      transform: scale(1.1);
+      z-index: 1;
+    }
+
+    /* Tooltip for supporters */
+    .supporter::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: 125%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #00bcd4dd;
+      color: #121212;
+      padding: 5px 10px;
+      border-radius: 6px;
+      white-space: nowrap;
+      font-size: 0.9rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      user-select: none;
+    }
+    .supporter:hover::after {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Voting info */
+    .voting-info {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 35px 20px;
+      border-radius: 14px;
+      box-shadow: 0 0 20px #0097a755;
+      text-align: center;
+      font-weight: 600;
+      color: #00bcd4;
+      font-size: 1.3rem;
+      letter-spacing: 0.04em;
+      margin-top: 40px;
+      user-select: none;
+    }
+
+    /* Contact */
+    .contact {
+      margin-top: 50px;
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: #aaa;
+      text-align: center;
+      line-height: 1.5;
+      user-select: none;
+    }
+    .contact strong {
+      color: #00bcd4;
+    }
+    .contact a {
+      text-decoration: none;
+      color: #00bcd4;
+    }
+    .contact a:hover {
+      text-decoration: underline;
+      color: #0097a7;
+    }
+
+    /* Vote Now Button */
+    .vote-button {
+      display: inline-block;
+      margin: 30px auto 0;
+      background: #00bcd4;
+      color: #121212;
+      font-weight: 700;
+      font-size: 1.3rem;
+      padding: 14px 48px;
+      border-radius: 40px;
+      cursor: pointer;
+      box-shadow: 0 0 15px #00bcd4cc;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+      text-align: center;
+      text-transform: uppercase;
+      font-family: 'Orbitron', sans-serif;
+    }
+    .vote-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 30px #0097a7ff;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0; transform: translateY(50px);
+      }
+      to {
+        opacity: 1; transform: translateY(0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 650px) {
+      header h1 {
+        font-size: 2.4rem;
+      }
+      h2 {
+        font-size: 1.8rem;
+      }
+      .achievement-card p {
+        font-size: 0.9rem;
+      }
+      .voting-info {
+        font-size: 1.1rem;
+      }
+      .vote-button {
+        font-size: 1.1rem;
+        padding: 12px 36px;
+      }
+    }
+  </style>
+</head>
+<body style="margin:0; font-family:sans-serif;">
+  <div style="
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                url('heet1.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    color: white;
+    padding: 40px;
+  ">
+
+  <div id="particles-js"></div>
+
+  <header>
+    <h1>Vote for Heet </h1>
+    <p>Vision. Integrity. Action. Your Voice, His Mission.</p>
+  </header>
+
+  <main>
+    <section id="why">
+      <h2>Why Choose Heet?</h2>
+      <ul>
+        <li>Natural leader with empathy and responsibility</li>
+        <li>Committed to representing every student's voice</li>
+        <li>Strong problem-solving skills to address student concerns</li>
+            <li>Encourages teamwork and school unity among all students</li>
+
+      </ul>
+      <section id="testimonials">
+  <h2>What Teachers Say</h2>
+  <div class="achievements-grid">
+    <div class="achievement-card">
+      <h3>Bhumika Mam, Class Teacher</h3>
+      <p>"Heet shows remarkable dedication and always supports his classmates."</p>
+    </div>
+    <div class="achievement-card">
+      <h3>Hetal Mam</h3>
+      <p>"A natural leader on and off the field. Heet inspires others to do their best."</p>
+    </div>
+    <div class="achievement-card">
+      <h3>Nupur Mam</h3>
+      <p>"I believe Heet will be an excellent Head Boy who truly represents the student body."</p>
+    </div>
+  </div>
+</section>
+
+    </section>
+
+    <section id="promises">
+      <h2>Heet's Campaign Promises</h2>
+      <ul>
+        <li>More student involvement in school decisions</li>
+        <li>Open suggestion box for all students</li>
+        <li>Boost school spirit and unity across all grades</li>
+      </ul>
+    </section>
+
+    
+        
+<section id="promises">
+  <h2>My Promises to You</h2>
+  <ul>
+    <li>Promote fair treatment for all students</li>
+    <li>Ensure timely resolution of student concerns</li>
+    <li>Build stronger communication between students and teachers</li>
+  </ul>
+</section>
+<section id="daily-life">
+  <h2>A Day in the Life of Heet</h2>
+  <p>Balancing studies, sports, and leadership activities — Heet is committed to giving his best every day.</p>
+  <ul>
+    <li>Morning assembly and study sessions</li>
+    <li>Leading class discussions and group projects</li>
+    <li>Sports practice and team mentoring</li>
+    <li>Participating in community service activities</li>
+    <li>Planning events and student council meetings</li>
+  </ul>
+</section>
+<section id="gallery">
+  <h2>Gallery</h2>
+  <div class="gallery-grid">
+    <img src="heet1.jpg" alt="Heet at cultural fest" />
+    <img src="heet2.jpg" alt="Heet leading a team" />
+    <img src="heet3.jpg" alt="Heet with classmates" />
+    <img src="heet4.jpg" alt="Heet during sports day" />
+  </div>
+</section>
+
+<style>
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+  }
+  .gallery-grid img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+  }
+  .gallery-grid img:hover {
+    transform: scale(1.05);
+  }
+</style>
+
+
+    
+
+    <section id="voting-info" class="voting-info">
+      🗳️ <strong>Voting will be held in school on 1th July</strong><br>
+      Make sure to be there and cast your vote for a better tomorrow!
+      
+    </section>
+
+    <section class="contact">
+      <p>For any help, contact <strong>Heet Chavda +91 9725426267</p>
+    </section>
+  </main>
+
+  <script>
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 100, density: { enable: true, value_area: 800 } },
+        color: { value: "#ffffff" },
+        shape: { type: "circle" },
+        opacity: { value: 0.4, random: false },
+        size: { value: 3, random: true },
+        line_linked: {
+          enable: true,
+          distance: 140,
+          color: "#00bcd4",
+          opacity: 0.3,
+          width: 1
+        },
+        move: { enable: true, speed: 2, direction: "none", random: false, straight: false }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: true, mode: "grab" },
+          onclick: { enable: false }
+        },
+        modes: {
+          grab: { distance: 140, line_linked: { opacity: 0.6 } }
+        }
+      },
+      retina_detect: true
+    });
+
+    const sections = document.querySelectorAll("section");
+
+    function revealSections() {
+      const triggerBottom = window.innerHeight * 0.85;
+
+      sections.forEach(section => {
+        const top = section.getBoundingClientRect().top;
+        if (top < triggerBottom) {
+          section.classList.add("visible");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", revealSections);
+
+    window.addEventListener("load", () => {
+      // Show all sections after 1 second (fallback)
+      setTimeout(() => {
+        sections.forEach(section => section.classList.add("visible"));
+      }, 1000);
+
+      revealSections();
+    });
+  </script>
+</body>
+</html>
